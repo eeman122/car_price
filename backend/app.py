@@ -24,16 +24,16 @@ app = FastAPI(title="Car Price Prediction API",
               version="1.0.0")
 
 # CORS Configuration - Updated for Hugging Face deployment
-origins = [
-    "http://localhost:8501",  # For local testing
-    "http://127.0.0.1:8000",  # For local testing
-    "https://*.hf.space",  # Allows all Hugging Face Spaces
-    f"https://{os.getenv('HF_USERNAME', 'annus-lums')}-car-price-app-frontend.hf.space"
-]
+# origins = [
+#     "http://localhost:8501",  # For local testing
+#     "http://127.0.0.1:8000",  # For local testing
+#     "https://*.hf.space",  # Allows all Hugging Face Spaces
+#     f"https://{os.getenv('HF_USERNAME', 'annus-lums')}-car-price-app-frontend.hf.space"
+# ]
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,
+    allow_origins=["https://car-price-1.onrender.com"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

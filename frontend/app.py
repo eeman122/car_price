@@ -17,7 +17,7 @@ st.set_page_config(page_title='Car Price Prediction & Search', layout='wide')
 #     BASE_URL = "http://localhost:8000"  # Local backend
 
 
-# BASE_URL = os.getenv('BACKEND_URL', 'http://localhost:8000')
+# BASE_URL = os.getenv('BACKEND_URL', 'https://car-price-2.onrender.com')
 
 if os.path.exists('/.dockerenv') and not os.getenv('RUNNING_LOCALLY'):
     # Hugging Face production

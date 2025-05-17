@@ -19,9 +19,9 @@ os.environ["HF_HOME"] = "/tmp"
 async def root():
     return {"message": "Hello, World!"}
 
-@app.head("/")
-async def head_root():
-    return {"message": "Hello, World!"}
+# @app.head("/")
+# async def head_root():
+#     return {"message": "Hello, World!"}
   
 # Initialize logging
 logging.basicConfig(level=logging.INFO)

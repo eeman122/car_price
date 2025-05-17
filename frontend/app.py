@@ -17,14 +17,14 @@ st.set_page_config(page_title='Car Price Prediction & Search', layout='wide')
 #     BASE_URL = "http://localhost:8000"  # Local backend
 
 
-# BASE_URL = os.getenv('BACKEND_URL', 'https://car-price-2.onrender.com')
+BASE_URL = os.getenv('BACKEND_URL', 'https://car-price-2.onrender.com')
 
-if os.path.exists('/.dockerenv') and not os.getenv('RUNNING_LOCALLY'):
-    # Hugging Face production
-    BASE_URL = f"https://{os.getenv('HF_USERNAME', 'annus-lums')}-car-price-app-backend.hf.space"
-else:
-    # Local development
-    BASE_URL = os.getenv('BACKEND_URL', 'http://localhost:8000')
+# if os.path.exists('/.dockerenv') and not os.getenv('RUNNING_LOCALLY'):
+#     # Hugging Face production
+#     BASE_URL = f"https://{os.getenv('HF_USERNAME', 'annus-lums')}-car-price-app-backend.hf.space"
+# else:
+#     # Local development
+#     BASE_URL = os.getenv('BACKEND_URL', 'http://localhost:8000')
 
 # Optional: Verify URL (check container logs)
 print(f"Using backend at: {BASE_URL}")

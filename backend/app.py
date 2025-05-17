@@ -15,13 +15,7 @@ from sklearn.preprocessing import StandardScaler, MinMaxScaler, OrdinalEncoder
 import os
 os.environ["HF_HOME"] = "/tmp"
 
-@app.get("/")
-async def root():
-    return {"message": "Hello, World!"}
 
-# @app.head("/")
-# async def head_root():
-#     return {"message": "Hello, World!"}
   
 # Initialize logging
 logging.basicConfig(level=logging.INFO)
@@ -30,6 +24,14 @@ logger = logging.getLogger(__name__)
 app = FastAPI(title="Car Price Prediction API",
               description="API for car price prediction and analytics",
               version="1.0.0")
+
+@app.get("/")
+async def root():
+    return {"message": "Hello, World!"}
+
+@app.head("/")
+async def head_root():
+    return {"message": "Hello, World!"}
 
 # CORS Configuration - Updated for Hugging Face deployment
 # origins = [

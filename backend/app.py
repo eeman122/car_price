@@ -15,6 +15,14 @@ from sklearn.preprocessing import StandardScaler, MinMaxScaler, OrdinalEncoder
 import os
 os.environ["HF_HOME"] = "/tmp"
 
+@app.get("/")
+async def root():
+    return {"message": "Hello, World!"}
+
+@app.head("/")
+async def head_root():
+    return {"message": "Hello, World!"}
+  
 # Initialize logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -38,7 +46,7 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
+print("connection made")
 # SQLite Database Connection
 def get_db() -> Connection:
     """Get a SQLite database connection with optimized settings"""
@@ -52,7 +60,8 @@ def get_db() -> Connection:
 try:
     linear_model = mlflow.sklearn.load_model("models/linear_model")
     poly_model = mlflow.sklearn.load_model("models/poly_model")
-    logger.info("✅ ML models loaded successfully")
+    logger.info(
+      "✅ ML models loaded successfully")
 except Exception as e:
     logger.error(f"❌ Failed to load ML models: {e}")
     raise
@@ -64,7 +73,7 @@ try:
 except Exception as e:
     logger.error(f"❌ Failed to load scalers: {e}")
     raise
-
+print("hi")
 # Request models
 class CarDetails(BaseModel):
     make: str
@@ -87,6 +96,7 @@ class SearchParams(BaseModel):
 @app.post("/predict", summary="Predict car price")
 def predict(details: CarDetails):
     try:
+        print("in predict post")
         logger.info("Model expects these features: %s", linear_model.feature_names_in_)
         input_data = details.dict()
         df = pd.DataFrame([input_data])

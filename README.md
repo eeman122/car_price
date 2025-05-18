@@ -11,7 +11,7 @@ To run on render we have used Dockerfile.fastapi and Dockerfile.streamlit.
 import random
 import pandas as pd
 
-# Define allowed values
+~Define allowed values
 cities = ['Islamabad', 'Lahore', 'Karachi', 'Rawalpindi', 'Faisalabad', 'Peshawar', 'Gujranwala', 'Sadiqabad', 'Bahawalpur', 'Vehari']
 assemblies = ['Local', 'Imported']
 bodies = ['Sedan', 'Hatchback', 'Compact SUV', 'Compact sedan', 'SUV', 'Crossover']
@@ -31,7 +31,7 @@ fuels = ['Petrol', 'Hybrid']
 colors = ['White', 'Silver', 'Silky Silver', 'Black', 'Burgundy', 'Taffeta White']
 registrations = cities + ['Punjab', 'Sindh', 'Un-Registered']
 
-# Generate random ad data
+~Generate random ad data
 def generate_random_car():
     make = random.choice(list(makes_models.keys()))
     model = random.choice(makes_models[make])
@@ -52,12 +52,12 @@ def generate_random_car():
         'price': random.randint(950000, 9500000)
     }
 
-# Generate dataset
+~Generate dataset
 def generate_car_data(n=20):
     data = [generate_random_car() for _ in range(n)]
     return pd.DataFrame(data)
 
-# Generate and save CSV
+~Generate and save CSV
 df = generate_car_data(20)
 df.to_csv('synthetic_car_data.csv', index=False)
 print(df)
